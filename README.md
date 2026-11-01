@@ -72,10 +72,3 @@ Dockerfile                                  Single-origin production container
 - No public matchmaking, accounts, bots or advanced abuse prevention yet. Do not deploy ranked competitions based on provisional rules.
 
 See [docs/PERSISTENCE.md](docs/PERSISTENCE.md), [docs/DEPLOY.md](docs/DEPLOY.md), and [TEST_REPORT.md](TEST_REPORT.md).
-
-## Cloud deployment choices (October 2026)
-
-- **Azure Container Apps:** `docs/AZURE_DEPLOY.md` and `scripts/azure-create-app.sh` (uses existing cloud credits, but metered billing and Azure Files configuration are required).
-- **Render:** `render.yaml` and `docs/RENDER_DEPLOY.md` (single-instance Starter with a 1 GB persistent disk, estimated $7.25/month before overages/taxes).
-
-These are deployment preparation files, **not evidence of a live deployment**. Both hosts must be verified with physical phones and storage restart tests.
