@@ -1,5 +1,6 @@
 FROM node:22-alpine
 WORKDIR /app
+RUN apk add --no-cache git
 COPY package*.json ./
 COPY packages/game-core/package.json packages/game-core/package.json
 COPY apps/react-web/package.json apps/react-web/package.json
