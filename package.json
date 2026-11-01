@@ -1,0 +1,32 @@
+{
+  "name": "kalitiri-multiplayer",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "workspaces": [
+    "packages/game-core",
+    "apps/react-web"
+  ],
+  "scripts": {
+    "build:core": "tsc --project tsconfig.json",
+    "build": "npm run build:core && npm run build --workspace @kalitiri/web",
+    "dev": "npm run build:core && concurrently -k -n SERVER,WEB -c cyan,green \"npm run dev:server\" \"npm run dev:web\"",
+    "dev:server": "node apps/colyseus-server/index.mjs",
+    "dev:web": "npm run dev --workspace @kalitiri/web",
+    "test": "npm run build:core && node --test packages/game-core/test/*.test.mjs apps/colyseus-server/test/*.test.mjs",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "demo": "npm run build:core && node apps/demo/simulate.mjs",
+    "start": "node apps/colyseus-server/index.mjs"
+  },
+  "dependencies": {
+    "colyseus": "^0.18.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "typescript": "^5.8.3"
+  }
+}

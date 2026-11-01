@@ -1,0 +1,18 @@
+# KaliTiri: one Docker service and one durable disk.
+# Review current plan prices and confirm costs before approving the Blueprint.
+services:
+  - type: web
+    name: kalitiri-multiplayer
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    numInstances: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: KALITIRI_DATA_DIR
+        value: /data/tables
+    disk:
+      name: kalitiri-matches
+      mountPath: /data
+      sizeGB: 1
